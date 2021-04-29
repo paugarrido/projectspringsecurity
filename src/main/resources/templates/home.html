@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<title>Home</title>
+</head>
+<body>
+<thead>
+
+<FONT FACE="impact" SIZE=7 COLOR="red">REGISTRATION</FONT>
+<br>
+<br>
+
+<form th:action="@{/login}" method="post">
+    <input type="submit" value="Login"/>
+</form>
+<form th:action="@{/registration}" method="get">
+    <input type="submit" value="Register"/>
+</form>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sortir (Sign Out)"/>
+</form>
+<br>
+<br>
+
+<tr>
+    <FONT FACE="impact" SIZE=7 COLOR="red">AFEGIR JUGADOR</FONT>
+    <br>
+    <br>
+    <form action="#"  th:action="@{afegir}"  method="post">
+        <input  type="submit"  value="Afegir Jugador"/>
+    </form>
+</tr>
+</br>
+</thead>
+<tbody>
+
+<FONT FACE="impact" SIZE=7 COLOR="red">LLISTA JUGADORS</FONT>
+<br>
+<br>
+
+<tr th:each="Jugador : ${llistaJugador}">
+    <FONT FACE="impact" SIZE=4 COLOR="BLACK"><td th:text="${Jugador.name}">Name</td></h3></FONT>
+    <b><p>Country: </b><td th:text="${Jugador.country}">Country</td>
+    <b><p>League: </b><td th:text="${Jugador.league}">League</td>
+    <b><p>Club: </b><td th:text="${Jugador.club}">Club</td>
+    <b><p>Position: </b><td th:text="${Jugador.position}">Position</td>
+    <b><p>Rate: </b><td th:text="${Jugador.rate}">Rate</td></p>
+    <br>
+
+    <form action="#"  th:action="@{update/{name}(name = ${Jugador.name})}" th:object="${Jugador}"  method="post">
+        <input type="submit" value="Update" style="background-color:green"/>
+    </form>
+    <br>
+    <form action="#"  th:action="@{delete/{name}(name = ${Jugador.name})}" th:object="${Jugador}"  method="post">
+        <input  type="submit"  value="Remove" style="background-color:red"/>
+    </form>
+    </br>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

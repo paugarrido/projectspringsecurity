@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h1 th:text="añadirJugador">AFEGIR JUGADOR</h1>
+
+<form action="#"  th:action="@{/afegirJugador}"  th:object="${Jugador}" method="POST" >
+
+
+    <div>
+        <FONT FACE="impact" SIZE=3 COLOR="BLACK"><label th:text="name">Nom Jugador</label></FONT>
+        <input type="text" id="name" th:field="*{name}"/>
+        <p th:each="error: ${#fields.errors('name')}"
+           th:text="${error}">Validation error</p>
+        <br>
+    </div>
+
+    <div>
+        <FONT FACE="impact" SIZE=3 COLOR="BLACK"><label th:text="country">Pais Jugador</label></FONT>
+        <input type="text" th:field="*{country}"/>
+        <p th:each="error: ${#fields.errors('country')}"
+           th:text="${error}">Validation error</p>
+        <br>
+    </div>
+
+    <div>
+        <FONT FACE="impact" SIZE=3 COLOR="BLACK"><label th:text="league">Liga Jugador</label></FONT>
+        <input type="text" th:field="*{league}"/>
+        <p th:each="error: ${#fields.errors('league')}"
+           th:text="${error}">Validation error</p>
+        <br>
+    </div>
+
+    <div>
+        <FONT FACE="impact" SIZE=3 COLOR="BLACK"><label th:text="club">Club Jugador</label></FONT>
+        <input type="text" th:field="*{club}"/>
+        <p th:each="error: ${#fields.errors('club')}"
+           th:text="${error}">Validation error</p>
+        <br>
+    </div>
+
+    <div>
+        <FONT FACE="impact" SIZE=3 COLOR="BLACK"><label th:text="position">Posicion Jugador</label></FONT>
+        <input type="text" th:field="*{position}"/>
+        <p th:each="error: ${#fields.errors('position')}"
+           th:text="${error}">Validation error</p>
+        <br>
+    </div>
+
+    <div>
+        <FONT FACE="impact" SIZE=3 COLOR="BLACK"><label th:text="rate">Media Jugador</label></FONT>
+        <input type="text" th:field="*{rate}"/>
+        <p th:each="error: ${#fields.errors('rate')}"
+           th:text="${error}">Validation error</p>
+        <br>
+    </div>
+
+    <button type="submit" th:text="Submit" style="background-color:green">submit</button>
+</form>
+
+<br>
+<br>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sortir (Sign Out)" style="background-color:red"/>
+</form>
+</body>
+
+</html>
